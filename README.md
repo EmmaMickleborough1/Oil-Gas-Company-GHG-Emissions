@@ -53,11 +53,11 @@ FROM Green_House_Gas_Emission_Facts;
 What is the average GHG per barrel of oil for each emission type?
 
 ```
-SELECT t.Type_Description,  
-AVG(nir.GHG_Per_Barrel_Of_Oil) AS Average_GHG_Per_Barrel  
-FROM Type t  
-JOIN National_Inventory_Reports nir ON t.Type_ID = nir.Type_ID  
-GROUP BY t.Type_Description;  
+SELECT et.Type_Description,
+ AVG(nir.GHG_Per_Barrel_Of_Oil) AS Average_GHG_Per_Barrel
+FROM Emission_Types et
+JOIN National_Inventory_Reports nir ON et.Type_ID = nir.Type_ID
+GROUP BY et.Type_Description; 
 ```
 
 ### Query 5
@@ -65,11 +65,11 @@ GROUP BY t.Type_Description;
 What is the national inventory reports for Alberta province, including the oil type and fact description? 
 
 ```
-SELECT nir.*,  
-t.Type_Description,  
-ghgef.Fact_Type_Description  
-FROM National_Inventory_Reports nir  
-JOIN Type t ON nir.Type_ID = t.Type_ID  
-JOIN Green_House_Gas_Emission_Facts ghgef ON nir.Fact_Type_ID = ghgef.Fact_Type_ID  
-WHERE nir.Prov_ID = 'P1'; 
+SELECT nir.*,
+ et.Type_Description,
+ ghgef.Fact_Type_Description
+FROM National_Inventory_Reports nir
+JOIN Emission_Types et ON nir.Type_ID = et.Type_ID
+JOIN Green_House_Gas_Emission_Facts ghgef ON nir.Fact_Type_ID = ghgef.Fact_Type_ID AND nir.Company_ID = ghgef.Company_ID
+WHERE nir.Prov_ID = 'P1';
 ```
