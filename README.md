@@ -15,6 +15,7 @@ The oil and gas industry in Canada is a significant contributor to greenhouse ga
 # Source Code 
 
 * [Create Script (DDL)]
+
 * [Populate Script (DML)]
   
 ## Sample Queris 
@@ -85,11 +86,16 @@ GROUP BY
 What is the national inventory reports for Alberta province, including the oil type and fact description? 
 
 ```
-SELECT nir.*,
+SELECT
+ nir.*,
  et.Type_Description,
  ghgef.Fact_Type_Description
-FROM National_Inventory_Reports nir
-JOIN Emission_Types et ON nir.Type_ID = et.Type_ID
-JOIN Green_House_Gas_Emission_Facts ghgef ON nir.Fact_Type_ID = ghgef.Fact_Type_ID AND nir.Company_ID = ghgef.Company_ID
-WHERE nir.Prov_ID = 'P1';
+FROM
+  National_Inventory_Reports nir
+JOIN
+  Emission_Types et ON nir.Type_ID = et.Type_ID
+JOIN
+  Green_House_Gas_Emission_Facts ghgef ON nir.Fact_Type_ID = ghgef.Fact_Type_ID AND nir.Company_ID = ghgef.Company_ID
+WHERE
+  nir.Prov_ID = 'P1';
 ```
