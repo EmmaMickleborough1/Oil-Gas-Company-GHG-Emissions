@@ -14,7 +14,7 @@ The oil and gas industry in Canada is a significant contributor to greenhouse ga
 
 # Source Code 
 
-* [Create Script (DDL)]
+* [Create Script](https://github.com/EmmaMickleborough1/Oil-Gas-Company-GHG-Emissions/commit/d910be1696fe6e163763be6ada102bbc14a2bbd1#diff-1784fb8c9b46b752ac80a64a0fb19ccc30731621c64354448c2b2b669b7ee948)
 
 * [Populate Script (DML)]
   
